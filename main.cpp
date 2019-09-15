@@ -14,7 +14,8 @@
 #define MAX_PROCESSES 20 // Maximum number of total processes
 #define MIN_SPAWN 1 // Min. number that can be spawned by one process
 #define MAX_SPAWN 3 // Max. number that can be spawned by one process
-#define OUT_FILE "out.txt" // Output file.
+
+const char* OUT_FILE = "out.txt"; // Output file.
 
 // Common file stream that all processes write to.
 std::ofstream f;
@@ -67,11 +68,6 @@ void initOutFile() {
 // Close output stream to the file and remove it.
 void cleanOutFile() {
   f.close();
-
-  int err;
-  if ((err = remove(OUT_FILE) != 0)) {
-    die(err);
-  }
 }
 
 // Initializes shared memory to store an integer counter and a mutex. The mutex operates in 
