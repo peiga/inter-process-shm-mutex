@@ -1,15 +1,14 @@
 # Process scoped shared memory mutex
 
-This is an example repository to demonstrate how to use process-scoped mutexes and shared memory in tandem to achieve inter process communication.
+This is an example repository to demonstrate how to use inter-process mutexes allocated on a shared memory segment and mapped to each address space, to achieve inter process communication.
 
 The binary generated from this C++ program, operates as follows:
 1. Recursively spawns a hierarchy child processes. 
 2. Each child process spawns 1 to 3 children.
 3. Without any communication, the growth is unbounded. 
-4. A shared segment of memory, to count the number of total processes.
+4. A shared segment of memory is allocated to count the number of total processes.
 5. Additionally, a pthread mutex with the `PTHREAD_PROCESS_SHARED` attribute is also allocated into shared memory.
-6. Before spawning new child processes, each process consults this mutex, and spawns children only if the counter does not 
-exceed a predefined ceiling.
+6. Before spawning new child processes, each process maps the shared segment into it's address space, consults this mutex, and spawns children only if the counter does not exceed a predefined ceiling.
 
 # Running the program
 Run `make` to create the binary and `make clean` to clean build artifacts. Alternatively,
