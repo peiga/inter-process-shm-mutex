@@ -191,21 +191,6 @@ void printProcessTree(pthread_mutex_t* m, int* counter) {
   unlockMtx(m);
 }
 
-// When printing results, since there are multiple processes
-// that want to do the same thing, we pick the first process that
-// wrote itself into the output file.
-std::string getProcessIdThatOutputsResult() {
-  std::string line;
-  std::ifstream f(OUT_FILE);
-
-  assert(f.is_open());
-
-  getline(f, line, ',');
-  getline(f, line, ',');
-  
-  return line;
-}
-
 int main() {
   initOutFile();
 
