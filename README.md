@@ -12,12 +12,20 @@ The binary generated from this C++ program, operates as follows:
 exceed a predefined ceiling.
 
 # Running the program
-Run `make` to create the binary and `make clean` to clean build artifacts.
+Run `make` to create the binary and `make clean` to clean build artifacts. Alternatively,
+use Docker to run the application as follows:
+```
+$ docker build -t ipcmtx .
+
+$ docker run -it ipcmtx /usr/src/app/binary
+```
+
 
 # Caveats and warnings
 1. Careful to tweak the program. The unbounded process growth can literally bring down the system to a halt.
 2. Note the system value of maximum memory that can be segmented into shared space. If this value is exceeded, the `shmget` syscall fails with
 `No space left on device`.
+3. A few versions of Clang/GCC were used. Thorough portable compilation is not guaranteed.
 
 # License 
 MIT

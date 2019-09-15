@@ -9,7 +9,10 @@
 #include <unordered_map>
 #include <vector>
 #include <string>
+#include <cstring>
+#include <assert.h>
 #include <sys/shm.h>
+#include <sys/wait.h>
 
 #define MAX_PROCESSES 20 // Maximum number of total processes
 #define MIN_SPAWN 1 // Min. number that can be spawned by one process
@@ -209,7 +212,8 @@ int main() {
   rfork(counter, m);
 
   // Wait
-  int s; wait(&s);
+  int s; 
+  wait(&s);
 
   // Write the process tree to stdout. Note that only the root process does this
   // since the children have their stdout redirected to /dev/null
