@@ -1,4 +1,4 @@
-# Process scoped shared memory mutex
+# Process scoped shared memory mutex &nbsp; [![Build Status](https://travis-ci.com/srishanbhattarai/inter-process-shm-mutex.svg?branch=master)](https://travis-ci.com/srishanbhattarai/inter-process-shm-mutex)
 
 This is an example repository to demonstrate how to use inter-process mutexes allocated on a shared memory segment and mapped to each address space, to achieve inter process communication.
 
