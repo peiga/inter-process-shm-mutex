@@ -1,0 +1,9 @@
+services:
+  - docker
+
+before_install:
+  - docker build -t ipcx .
+
+script:
+  - docker run -it ipcx /usr/src/app/binary
+
